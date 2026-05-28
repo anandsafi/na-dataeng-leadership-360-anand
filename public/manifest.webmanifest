@@ -1,21 +1,8 @@
 {
-  "name": "The Data Dispatch",
-  "short_name": "DataDispatch",
-  "description": "Daily data engineering and data leadership crawler",
-  "start_url": "/",
+  "name": "Data Dispatch",
+  "short_name": "Dispatch",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#0f172a",
-  "icons": [
-    {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+  "start_url": "/",
+  "background_color": "#111827",
+  "theme_color": "#111827"
 }
