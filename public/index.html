@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>The Data Dispatch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#07111f" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/icon-192.png" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">The Data Dispatch</p>
+        <h1>Executive signal for data leaders.</h1>
+        <p class="subtitle">Curated data engineering and leadership reads, refreshed throughout the day.</p>
+      </div>
+      <div class="hero-actions">
+        <button id="refreshBtn">Check for New Now</button>
+        <p id="status">Loading latest brief...</p>
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="Filters">
+      <div>
+        <label for="categoryFilter">View</label>
+        <select id="categoryFilter">
+          <option value="all">All</option>
+          <option value="engineering">Data Engineering</option>
+          <option value="leadership">Leadership</option>
+        </select>
+      </div>
+      <div>
+        <label for="sourceFilter">Source</label>
+        <select id="sourceFilter">
+          <option value="all">All sources</option>
+        </select>
+      </div>
+      <div>
+        <label for="searchInput">Search</label>
+        <input id="searchInput" type="search" placeholder="dbt, platform, hiring..." />
+      </div>
+    </section>
+
+    <section class="section-heading">
+      <div>
+        <p class="kicker">Category</p>
+        <h2>Data Engineering</h2>
+      </div>
+      <span id="engineeringCount" class="pill">—</span>
+    </section>
+    <section id="engineeringItems" class="grid"></section>
+
+    <section class="section-heading leadership-heading">
+      <div>
+        <p class="kicker">Category</p>
+        <h2>Leadership</h2>
+      </div>
+      <span id="leadershipCount" class="pill">—</span>
+    </section>
+    <section id="leadershipItems" class="grid compact"></section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
