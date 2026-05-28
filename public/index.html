@@ -1,32 +1,85 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Data Dispatch</title>
-<style>
-body{font-family:Arial;background:#111827;color:white;margin:0;padding:24px}
-h1{font-size:42px}
-.section{margin-top:32px}
-.card{background:#1f2937;padding:16px;border-radius:12px;margin-bottom:12px}
-a{color:#93c5fd;text-decoration:none}
-button{padding:12px 18px;border:none;border-radius:10px;background:#2563eb;color:white}
-</style>
+  <meta charset="utf-8" />
+  <title>Data Dispatch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#fff7ed" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-<h1>Data Dispatch</h1>
-<button onclick="refreshNews()">Check for New Now</button>
+  <div class="grain"></div>
 
-<div class="section">
-<h2>Data Engineering</h2>
-<div id="engineering"></div>
-</div>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <div class="brand-mark"><span></span><span></span><span></span><span></span><span></span></div>
+      <div>
+        <h1>Data Dispatch</h1>
+        <p>Daily signal for builders and leaders of data teams.</p>
+      </div>
+    </a>
 
-<div class="section">
-<h2>Data Leadership</h2>
-<div id="leadership"></div>
-</div>
+    <button id="refreshBtn" class="primary-button">
+      <span>↻</span>
+      Check for New Now
+    </button>
+  </header>
 
-<script src="/app.js"></script>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> Curated data intelligence</div>
+        <h2>The morning board for modern data teams.</h2>
+        <p>A clean, ranked feed of high-signal reads across data engineering, platform thinking, governance, and leadership craft.</p>
+      </div>
+
+      <aside class="insight-panel">
+        <div class="panel-header">
+          <span>Dispatch status</span>
+          <strong id="statusPill">Loading</strong>
+        </div>
+        <div class="metrics">
+          <div class="metric"><span id="engCount">0</span><label>Data Engineering</label></div>
+          <div class="metric"><span id="leadCount">0</span><label>Data Leadership</label></div>
+        </div>
+        <div class="updated"><label>Last updated</label><span id="lastUpdated">—</span></div>
+      </aside>
+    </section>
+
+    <section class="toolbar">
+      <div class="search-wrap"><span>⌕</span><input id="searchInput" placeholder="Search Snowflake, dbt, governance, culture..." /></div>
+      <select id="groupFilter">
+        <option value="All">All groups</option>
+        <option value="Medium">Medium</option>
+        <option value="Substack">Substack</option>
+        <option value="Other">Other</option>
+      </select>
+      <select id="sourceFilter"><option value="All">All sources</option></select>
+    </section>
+
+    <div id="status" class="status-line">Loading latest dispatch…</div>
+
+    <section class="tabs">
+      <button class="tab active" data-tab="engineering"><span>01</span>Data Engineering</button>
+      <button class="tab" data-tab="leadership"><span>02</span>Data Leadership</button>
+    </section>
+
+    <section id="engineeringPanel" class="feed-panel active">
+      <div class="section-heading">
+        <div><h2>Data Engineering</h2><p>Architecture, orchestration, quality, warehousing, lakehouse, and analytics engineering.</p></div>
+      </div>
+      <div id="engineeringFeed" class="feed"></div>
+    </section>
+
+    <section id="leadershipPanel" class="feed-panel">
+      <div class="section-heading">
+        <div><h2>Data Leadership</h2><p>Strategy, operating models, governance, data culture, team design, and executive communication.</p></div>
+      </div>
+      <div id="leadershipFeed" class="feed"></div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
 </body>
 </html>
