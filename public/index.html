@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>The Data Dispatch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="The Data Dispatch home">
+      <span class="brand-mark">D</span>
+      <span>
+        <strong>The Data Dispatch</strong>
+        <small>Data engineering and leadership brief</small>
+      </span>
+    </a>
+    <button id="refreshBtn" class="refresh-btn">Check for New Now</button>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero-card">
+      <div>
+        <p class="eyebrow">Daily signal</p>
+        <h1>Top reads for data builders and data leaders.</h1>
+        <p class="hero-copy">A Product Hunt-style brief organized by category, source, and relevance.</p>
+      </div>
+      <div class="status-card">
+        <span>Status</span>
+        <strong id="status">Loading...</strong>
+      </div>
+    </section>
+
+    <section class="filters-card" aria-label="Filters">
+      <label>
+        <span>Category</span>
+        <select id="categoryFilter">
+          <option value="all">All categories</option>
+          <option value="engineering">Data Engineering</option>
+          <option value="leadership">Data Leadership</option>
+        </select>
+      </label>
+      <label>
+        <span>Source</span>
+        <select id="sourceFilter">
+          <option value="all">All sources</option>
+        </select>
+      </label>
+      <label class="search-label">
+        <span>Search</span>
+        <input id="searchInput" type="search" placeholder="Search title, source, topic..." />
+      </label>
+    </section>
+
+    <section class="content-grid">
+      <section class="feed-column" id="engineeringSection">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Category</p>
+            <h2>Data Engineering</h2>
+          </div>
+          <span id="engineeringCount" class="count-pill">0 reads</span>
+        </div>
+        <div id="engineeringItems" class="hunt-list"></div>
+      </section>
+
+      <section class="feed-column" id="leadershipSection">
+        <div class="section-heading leadership-heading">
+          <div>
+            <p class="eyebrow">Category</p>
+            <h2>Data Leadership</h2>
+          </div>
+          <span id="leadershipCount" class="count-pill">0 reads</span>
+        </div>
+        <div id="leadershipItems" class="hunt-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
