@@ -1,3 +1,10 @@
 [build]
   publish = "public"
   functions = "netlify/functions"
+  command = "npm install"
+
+[functions]
+  node_bundler = "esbuild"
+
+[functions."update-news"]
+  schedule = "0 */6 * * *"
