@@ -1,5 +1,5 @@
 :root {
-  --bg: #f6f6f3;
+  --bg: #f7f7f5;
   --card: #ffffff;
   --ink: #111827;
   --muted: #6b7280;
@@ -53,7 +53,7 @@ a:hover { color: var(--orange-dark); }
   place-items: center;
   border-radius: 12px;
   color: white;
-  background: var(--orange);
+  background: linear-gradient(135deg, var(--orange), #ff8a4c);
   font-weight: 900;
   box-shadow: 0 10px 22px rgba(255, 97, 84, 0.3);
 }
@@ -85,7 +85,7 @@ a:hover { color: var(--orange-dark); }
   align-items: stretch;
   padding: clamp(1.25rem, 4vw, 2rem);
   border: 1px solid var(--line);
-  border-radius: 28px;
+  border-radius: 24px;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: var(--shadow);
 }
@@ -125,7 +125,7 @@ h1 {
 .filters-card {
   margin: 1rem 0;
   display: grid;
-  grid-template-columns: 180px 220px minmax(0, 1fr);
+  grid-template-columns: 170px 170px 220px minmax(0, 1fr);
   gap: 0.75rem;
   padding: 0.75rem;
   border: 1px solid var(--line);

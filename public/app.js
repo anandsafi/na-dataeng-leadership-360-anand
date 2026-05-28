@@ -8,6 +8,7 @@ const engineeringCountEl = document.getElementById("engineeringCount");
 const leadershipCountEl = document.getElementById("leadershipCount");
 const refreshBtn = document.getElementById("refreshBtn");
 const categoryFilter = document.getElementById("categoryFilter");
+const sourceTypeFilter = document.getElementById("sourceTypeFilter");
 const sourceFilter = document.getElementById("sourceFilter");
 const searchInput = document.getElementById("searchInput");
 const engineeringSection = document.getElementById("engineeringSection");
@@ -58,23 +59,28 @@ function getBuckets(data) {
 
 function updateSourceFilter() {
   const selected = sourceFilter.value;
-  const sources = [...new Set([
-    ...currentData.engineering,
-    ...currentData.leadership
-  ].map(item => item.source).filter(Boolean))].sort();
+  const selectedSourceType = sourceTypeFilter.value;
+  const allItems = [...currentData.engineering, ...currentData.leadership];
+  const visibleByGroup = selectedSourceType === "all"
+    ? allItems
+    : allItems.filter(item => item.sourceType === selectedSourceType);
+
+  const sources = [...new Set(visibleByGroup.map(item => item.source).filter(Boolean))].sort();
 
   sourceFilter.innerHTML = `<option value="all">All sources</option>` +
     sources.map(source => `<option value="${escapeHtml(source)}">${escapeHtml(source)}</option>`).join("");
 
-  if (sources.includes(selected)) sourceFilter.value = selected;
+  sourceFilter.value = sources.includes(selected) ? selected : "all";
 }
 
 function itemMatches(item, category) {
   const selectedCategory = categoryFilter.value;
+  const selectedSourceType = sourceTypeFilter.value;
   const selectedSource = sourceFilter.value;
   const query = searchInput.value.trim().toLowerCase();
 
   if (selectedCategory !== "all" && selectedCategory !== category) return false;
+  if (selectedSourceType !== "all" && item.sourceType !== selectedSourceType) return false;
   if (selectedSource !== "all" && item.source !== selectedSource) return false;
 
   if (query) {
@@ -172,7 +178,7 @@ async function loadNews() {
   }
 }
 
-[categoryFilter, sourceFilter, searchInput].forEach(control => {
+[categoryFilter, sourceTypeFilter, sourceFilter, searchInput].forEach(control => {
   control.addEventListener("input", () => render({ ...currentData, generatedAt: lastGeneratedAt }));
 });
 
